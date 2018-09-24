@@ -5,12 +5,13 @@ export function * helloSaga () {
   console.log('Hello Sagas!')
 }
 
+// incrementAsync Saga is suspended until the Promise returned by delay resolves, which will happen after 1 second.
 export function * incrementAsync () {
   yield call(delay, 1000)
   yield put({ type: 'INCREMENT' })
 }
 
-function * watchIncrementAsync () {
+export function * watchIncrementAsync () {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
